@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 호이스팅 : 선언하지 않고 호출
+      // 1. function 키워드로 작성된 함수
+      // 2. var로 선언된 변수
+
+      x = 5;
+      document.write("x = " + x);
+      var x;
+
+      document.write("<br>", "result" + mtFunction(4, 5));
+
+      // document.write("<br>", "result" + mtFunction2(4, 5));
+
+      // 두개의 파라미터를 받아서 곱한 후 결과 리턴
+      function myFunction(a, b) {
+        return a * b;
+      }
+
+      // 2. 함수 표현식
+      // 파라미터 값이 안 엄어오는 경우 undefined 임
+      //  b = 10; 값이 안 넘어오면 기본값의 의미
+      const myFunction2 = function (a, b = 10) {
+        return a * b;
+      };
+      // func 이름은 외부에서 후출 불가
+      // func 이름은 내부에서 사용 가능
+
+      const myFunction4 = function func(a, b) {
+        console.log("b = " + b);
+        return a * b;
+      };
+
+      // Arrow Function(화살표 함수)
+      const myFunction3 = (a, b) => a * b;
+
+      // 3. 즉시호출 함수 : 무저건 실행해야 하는 함수일 때
+      (function () {
+        document.write("hello");
+      })();
+
+      // 함수 사용 - 호출
+      let result = myFunction(3, 4);
+      document.write("<br>", "result" + result);
+      document.write("<br>", "result" + mtFunction2(4, 5));
+    </script>
+  </body>
+</html>
