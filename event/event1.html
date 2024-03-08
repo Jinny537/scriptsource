@@ -6,22 +6,18 @@
     <title>Document</title>
   </head>
   <body>
-    <button type="button" onclick="myFunction()">클릭해주세요</button>
-    <button type="button">클릭해주세요2</button>
+    <div class="one">
+      one
+      <div class="two">
+        two
+        <div class="three">three</div>
+      </div>
+    </div>
     <script>
-      // 이벤트 - 사이트에서 방문자가 취하는 모든 행위
-      // 이벤트 발생 => 이벤트가 일어났음을 감지하는 코드 필요(이벤트 핸들러 or 이벤트 리스너)
-
-      // on~ : 이벤트 리스너, myfunction() : 이벤트 핸들러
-      function myFunction() {
-        // 버튼이 눌렸을 때 해야할 코드
-        alert("버튼이 클릭됨");
-      }
-
-      // addEventListener(이벤트명, 함수명)
-      //   document.querySelector("body button:nth-child(2)").addEventListener("click", myFunction);
-      document.querySelector("body button:nth-child(2)").addEventListener("click", () => {
-        alert("두 번째 버튼이 클릭됨");
+      const one = document.querySelector(".one");
+      one.addEventListener("click", (e) => {
+        console.log("e.target ", e.target);
+        console.log("e.currentTarget ", e.currentTarget);
       });
     </script>
   </body>

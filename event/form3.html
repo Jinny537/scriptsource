@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <div>
+        <label for="username">이름</label>
+        <input type="text" name="username" id="username" />
+      </div>
+      <div>
+        <label for="password">비밀번호</label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div>
+        <label for="age">나이</label>
+        <input type="text" name="age" id="age" />
+      </div>
+      <div>
+        <button type="submit">전송</button>
+      </div>
+    </form>
+    <script>
+      // form submit이 되면
+      // input 요소가 비어있는지 확인하기
+      // 비어 있다면 alert('이름을 입력해주세요')
+
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const age = document.getElementById("age");
+
+        if (username.value == "") {
+          alert("이름을 입력해주세요");
+        } else if (password.value == "") {
+          alert("비일번호를 입력해주세요");
+          password.focus();
+        } else if (age.value == "" || isNaN(age)) {
+          // 숫자가 아니라면
+          alert("나이를 확인해주세요");
+          //   age.focus();
+          age.select();
+        }
+      });
+    </script>
+  </body>
+</html>

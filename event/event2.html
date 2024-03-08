@@ -4,86 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      table,
-      td {
-        border: 2px solid black;
-      }
-      table {
-        margin-top: 20px;
-        border-collapse: collapse;
-      }
-    </style>
   </head>
   <body>
-    <button type="button">버튼 1</button>
-    <button type="button">버튼 2</button>
-    <table id="outside">
-      <tr>
-        <td id="t1">one</td>
-      </tr>
-      <tr>
-        <td id="t2">two</td>
-      </tr>
-    </table>
-    <p id="demo">click me</p>
-    <div>
-      <a href="http://www.naver.com">네이버</a>
-    </div>
+    <button type="button" onclick="myFunction()">클릭해주세요</button>
+    <button type="button">클릭해주세요2</button>
     <script>
-      // 버튼 1 클릭되면 안녕하세요 alert 띄우기
-      // 버튼 2 클릭되면 Hello 이름 alert 띄우기
+      // 이벤트 - 사이트에서 방문자가 취하는 모든 행위
+      // 이벤트 발생 => 이벤트가 일어났음을 감지하는 코드 필요(이벤트 핸들러 or 이벤트 리스너)
 
-      // 버튼 찾기
-      const btns = document.querySelectorAll("button");
-
-      console.log(btns[0]);
-      console.log(btns[1]);
-
-      function showDialog(greeting, name) {
-        alert(`${greeting}!! ${name}`);
+      // on~ : 이벤트 리스너, myfunction() : 이벤트 핸들러
+      function myFunction() {
+        // 버튼이 눌렸을 때 해야할 코드
+        alert("버튼이 클릭됨");
       }
 
-      // 버튼 이벤트 여부를 감지
-      btns[0].addEventListener("click", () => alert("안녕하세요"));
-      btns[1].addEventListener("click", () => showDialog("Hello", "홍길동"));
-
-      // table 클릭 시 two => three, three => two
-
-      // table 찾기 / 이벤트 리스너 찾기(click) / two => three, three => two
-      const table = document.querySelector("#outside");
-      table.addEventListener("click", () => {
-        const t2 = document.getElementById("t2");
-
-        // if (t2.innerText == "two") {
-        //   t2.innerText = "three";
-        // } else {
-        //   t2.innerHTML = "two";
-        // }
-
-        // 삼항 연산자
-        t2.innerText = t2.innerText == "two" ? "three" : "two";
-      });
-
-      // p태그 클릭 시 텍스트의 노드의 값 보여주기
-      document.querySelector("#demo").addEventListener("click", (e) => {
-        // alert(document.querySelector("#demo").innerText);
-        // 현재 이벤트가 발생한 대상 : e
-        // console.log(e.target);
-        // alert(e.target.innerText);
-        // Click me => Good job
-        e.target.innerText = "Good job";
-      });
-
-      // a, submit, reset : 기믕을 가지고 있는 요소
-      //                    스크림트 동직을 작성하길 원한다면 원래 기능을 중단
-
-      // a클릭 시 다음으로 이동하기]
-      document.querySelector("a").addEventListener("click", (e) => {
-        // 요소가 가지고 있는 기능 중지
-        e.preventDefault();
-
-        location.href = "http://www.daum.net";
+      // addEventListener(이벤트명, 함수명)
+      //   document.querySelector("body button:nth-child(2)").addEventListener("click", myFunction);
+      document.querySelector("body button:nth-child(2)").addEventListener("click", () => {
+        alert("두 번째 버튼이 클릭됨");
       });
     </script>
   </body>
