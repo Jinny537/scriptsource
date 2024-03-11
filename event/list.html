@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container card-group">
+      <div class="card">
+        <img src="https://" alt="" />
+      </div>
+    </div>
+    <script>
+      // product 겂 화면 출력
+      // 디자인 영역 가져오기 => products 값 삽입
+      const card = document.querySelectorAll(".card");
+      card.forEach((card) => {
+        console.log(card, idx);
+
+        console.log(card, " ", idx);
+        console.log(card.querySelector("h5").innerHTML);
+        console.log(card.querySelector("p > span").innerHTML);
+
+        card.querySelector("h5").innerHTML = products[idx].title;
+      });
+    </script>
+  </body>
+</html>
