@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container card-group">
+      <div class="row mb-2">
+        <div class="col-sm-4">
+          <img src="https://place.co/600x600" class="card-img-top" alt="..." />
+          <h5 class="card-title">Card-title</h5>
+          <p class="card=text">
+            <span>70000</span>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img src="https://place.co/600x600" class="card-img-top" alt="..." />
+          <h5 class="card-title">Card-title</h5>
+          <p class="card=text">
+            <span>70000</span>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img src="https://place.co/600x600" class="card-img-top" alt="..." />
+          <h5 class="card-title">Card-title</h5>
+          <p class="card=text">
+            <span>70000</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-danger" id="more">더보기...</button>
+    <script>
+      // product 겂 화면 출력
+      // 디자인 영역 가져오기 => products 값 삽입
+      const cols = document.querySelectorAll(".container .row:nth-child(2) .col-sm-4");
+      cols.forEach((col, idx) => {
+        cols.querySelector("h5").innerHTML = products[idx].title;
+        cols.querySelector("p > span").innerHTML = products[idx].price;
+      });
+
+      // 더보기 클리 시 두번째 줄 상품 가져온 후 button 요소 앞 쪽에 보여주기
+      // 버튼 부 번 클릭 시 disable 시키기
+
+      // 버튼의 회수 변수
+      let count = 0;
+
+      document.querySelector("#more").addEventListener("click", (e) => {
+        // 버튼 횟수 증가
+        count++;
+
+        let url = "https://Jinny537.github.io/";
+
+        if (count ==) {
+          url += "more1.json";
+        } else {
+          url += "more2.json";
+        }
+
+        // 버튼 횟수
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) throw new Error();
+            return response.json;
+          })
+          .then((data) => {
+            console.log(data);
+
+            let product = `<div class="row mb-2">`;
+            data.forEach((item) => {
+              product += `<div class="col-sm-4">`;
+              product += `<img src="https://place.co/600x600" class="card-img-top" alt="..." />`;
+              product += `<h5 class="card-title">Card-title</h5>`;
+              product += `<p class="card=text">`;
+              product += `<span>70000</span>`;
+              product += `</p></div>`;
+            });
+            product += `</div>`;
+
+            e.target.insertAdjacentHTML("beforebegin", product);
+
+            if (count == 2) e.target.disabled = true;
+          })
+          .catch(() => console.log("에러"));
+      });
+    </script>
+  </body>
+</html>
